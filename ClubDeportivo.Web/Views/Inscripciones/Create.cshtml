@@ -1,0 +1,26 @@
+@model ClubDeportivo.Web.Models.ViewModels.InscripcionCreateVM
+@{
+    ViewData["Title"] = "Inscribir socio";
+}
+
+<h2>Inscribir socio</h2>
+<div class="alert alert-secondary">
+    <strong>Socio:</strong> @Model.NombreSocio (ID: @Model.SocioId)
+</div>
+
+<form asp-action="Create" method="post">
+    <input type="hidden" asp-for="SocioId" />
+    <div class="mb-3">
+        <label class="form-label">Actividad</label>
+        <select asp-for="ActividadId" asp-items="Model.ActividadesDisponibles" class="form-select">
+            <option value="">-- Seleccionar --</option>
+        </select>
+        <span asp-validation-for="ActividadId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Inscribir</button>
+    <a asp-controller="Socios" asp-action="Details" asp-route-id="@Model.SocioId" class="btn btn-secondary">Volver</a>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

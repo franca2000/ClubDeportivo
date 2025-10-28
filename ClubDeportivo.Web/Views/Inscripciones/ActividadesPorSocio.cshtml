@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Actividades del socio";
+    var socio = (string)ViewBag.Socio;
+}
+<h2>Actividades de @socio</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Actividad</th>
+            <th>Días</th>
+            <th>Hora</th>
+            <th>Fecha inscripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var a in (IEnumerable<dynamic>)Model)
+{
+        <tr>
+            <td>@a.Nombre</td>
+            <td>@a.Dias</td>
+            <td>@a.HoraInicio - @a.HoraFin</td>
+            <td>@a.FechaInscripcion.ToString("dd/MM/yyyy")</td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,81 @@
+@model IEnumerable<ClubDeportivo.Web.Models.Socio>
+
+    @{
+    ViewData["Title"] = "Index";
+    }
+
+    <h1>Index</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <form method="get" class="row g-2 mb-3">
+        <div class="col-auto">
+            <input type="text" name="q" value="@(ViewBag.Q ?? "")" class="form-control" placeholder="Buscar por DNI o nombre..." />
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-outline-primary" type="submit">Buscar</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Limpiar</a>
+        </div>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dni)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Apellido)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaNacimiento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Direccion)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dni)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.SocioId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.SocioId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.SocioId">Delete</a>
+                </td>
+            </tr>
+}
+        </tbody>
+    </table>

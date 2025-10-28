@@ -1,0 +1,86 @@
+@model ClubDeportivo.Web.Models.Actividad
+@{
+    ViewData["Title"] = "Detalle de actividad";
+    var inscriptos = (int)(ViewBag.Inscritos ?? 0);
+    var cuposLibres = Model.Cupo - inscriptos;
+}
+
+<h2>Detalle de actividad</h2>
+
+@if (TempData["Ok"] != null)
+{
+<div class="alert alert-success">@TempData["Ok"]</div>
+}
+@if (TempData["Error"] != null)
+{
+<div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <h4 class="card-title mb-3">@Model.Nombre</h4>
+
+        <dl class="row">
+            <dt class="col-sm-3">Descripción</dt>
+            <dd class="col-sm-9">@Model.Descripcion</dd>
+
+            <dt class="col-sm-3">Días</dt>
+            <dd class="col-sm-9">@Model.Dias</dd>
+
+            <dt class="col-sm-3">Horario</dt>
+            <dd class="col-sm-9">@Model.HoraInicio - @Model.HoraFin</dd>
+
+            <dt class="col-sm-3">Cupo</dt>
+            <dd class="col-sm-9">@Model.Cupo</dd>
+
+            <dt class="col-sm-3">Inscriptos</dt>
+            <dd class="col-sm-9">@inscriptos</dd>
+
+            <dt class="col-sm-3">Cupos libres</dt>
+            <dd class="col-sm-9">@cuposLibres</dd>
+
+            <dt class="col-sm-3">Activa</dt>
+            <dd class="col-sm-9">@(Model.Activo ? "Sí" : "No")</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="d-flex flex-wrap gap-2">
+    <a asp-action="Edit" asp-route-id="@Model.ActividadId" class="btn btn-warning">
+        Editar
+    </a>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Volver al listado
+    </a>
+
+    @* Botón de baja lógica *@
+    @if (Model.Activo)
+    {
+        if (inscriptos == 0)
+        {
+    <form asp-action="Delete" asp-route-id="@Model.ActividadId" method="post" class="d-inline"
+          onsubmit="return confirm('¿Dar de baja la actividad? Esta acción es lógica (Activo = false).');">
+        <button type="submit" class="btn btn-danger">
+            Dar de baja (lógica)
+        </button>
+    </form>
+        }
+        else
+        {
+    <button type="button" class="btn btn-danger" disabled
+            title="No se puede dar de baja: tiene socios inscriptos">
+        Dar de baja (lógica)
+    </button>
+        }
+    }
+    else
+    {
+    <span class="badge bg-secondary align-self-center">Actividad inactiva</span>
+    }
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

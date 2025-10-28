@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Socios por actividad";
+}
+<h2>Socios por actividad</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Actividad</th>
+            <th>Activa</th>
+            <th>Socios inscriptos</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var row in (IEnumerable<dynamic>)Model)
+{
+        <tr>
+            <td>@row.Nombre</td>
+            <td>@(row.Activo ? "Sí" : "No")</td>
+            <td>@row.TotalSocios</td>
+        </tr>
+}
+    </tbody>
+</table>

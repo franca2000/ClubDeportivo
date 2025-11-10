@@ -10,6 +10,7 @@ C:\Users\Usuario\OneDrive\Desktop\ClubDeportivo\ClubDeportivo.Web\bin\Debug\net9
 C:\Users\Usuario\OneDrive\Desktop\ClubDeportivo\ClubDeportivo.Web\bin\Debug\net9.0\Azure.Core.dll
 C:\Users\Usuario\OneDrive\Desktop\ClubDeportivo\ClubDeportivo.Web\bin\Debug\net9.0\Azure.Identity.dll
 C:\Users\Usuario\OneDrive\Desktop\ClubDeportivo\ClubDeportivo.Web\bin\Debug\net9.0\Humanizer.dll
+C:\Users\Usuario\OneDrive\Desktop\ClubDeportivo\ClubDeportivo.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
 C:\Users\Usuario\OneDrive\Desktop\ClubDeportivo\ClubDeportivo.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\Usuario\OneDrive\Desktop\ClubDeportivo\ClubDeportivo.Web\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Usuario\OneDrive\Desktop\ClubDeportivo\ClubDeportivo.Web\bin\Debug\net9.0\Microsoft.Build.dll
@@ -282,6 +283,7 @@ C:\Users\Usuario\OneDrive\Desktop\ClubDeportivo\ClubDeportivo.Web\obj\Debug\net9
 C:\Users\Usuario\OneDrive\Desktop\ClubDeportivo\ClubDeportivo.Web\obj\Debug\net9.0\ClubDeportivo.Web.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Usuario\OneDrive\Desktop\ClubDeportivo\ClubDeportivo.Web\obj\Debug\net9.0\ClubDeportivo.Web.RazorAssemblyInfo.cache
 C:\Users\Usuario\OneDrive\Desktop\ClubDeportivo\ClubDeportivo.Web\obj\Debug\net9.0\ClubDeportivo.Web.RazorAssemblyInfo.cs
+C:\Users\Usuario\OneDrive\Desktop\ClubDeportivo\ClubDeportivo.Web\obj\Debug\net9.0\ClubDeportivo.Web.sourcelink.json
 C:\Users\Usuario\OneDrive\Desktop\ClubDeportivo\ClubDeportivo.Web\obj\Debug\net9.0\rjimswa.dswa.cache.json
 C:\Users\Usuario\OneDrive\Desktop\ClubDeportivo\ClubDeportivo.Web\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\Usuario\OneDrive\Desktop\ClubDeportivo\ClubDeportivo.Web\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json

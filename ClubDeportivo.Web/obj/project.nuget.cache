@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "KFHDqQw4Vt0=",
+  "dgSpecHash": "x+wpWk5oaEY=",
   "success": true,
   "projectFilePath": "C:\\Users\\Usuario\\OneDrive\\Desktop\\ClubDeportivo\\ClubDeportivo.Web\\ClubDeportivo.Web.csproj",
   "expectedPackageFiles": [
@@ -56,6 +56,7 @@
     "C:\\Users\\Usuario\\.nuget\\packages\\humanizer.core.zh-cn\\2.14.1\\humanizer.core.zh-cn.2.14.1.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
+    "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\9.0.10\\microsoft.aspnetcore.diagnostics.entityframeworkcore.9.0.10.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.24\\microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.build\\17.10.4\\microsoft.build.17.10.4.nupkg.sha512",

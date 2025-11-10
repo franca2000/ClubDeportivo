@@ -1,8 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ClubDeportivo.Web"
+    "\\ClubDeportivo.Web",
+    "\\ClubDeportivo.Web\\Controllers",
+    "\\ClubDeportivo.Web\\Data",
+    "\\ClubDeportivo.Web\\Models",
+    "\\ClubDeportivo.Web\\Properties",
+    "\\ClubDeportivo.Web\\Views",
+    "\\ClubDeportivo.Web\\Views\\Home",
+    "\\ClubDeportivo.Web\\Views\\Inscripciones",
+    "\\ClubDeportivo.Web\\Views\\Shared"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\ClubDeportivo.Web\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -1,8 +1,45 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="py-5">
+    <div class="text-center mb-5">
+        <img src="~/img/cal_logo.png" alt="Logo Club Atlético Libertad" height="120" class="mb-3" />
+        <h1 class="fw-bold text-primary">Club Atlético Libertad</h1>
+        <p class="lead text-secondary">
+            Fundado con el propósito de promover la actividad física, el compañerismo y los valores del deporte.
+            Nuestro club ofrece una amplia variedad de actividades recreativas, formativas y competitivas para todas las edades.
+        </p>
+    </div>
+
+    <div class="row justify-content-center text-center g-4">
+        <div class="col-12 col-md-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Socios</h5>
+                    <p class="card-text text-muted">Gestión de altas, bajas y datos personales de los socios del club.</p>
+                    <a asp-controller="Socios" asp-action="Index" class="btn btn-outline-primary">Ver socios</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Actividades</h5>
+                    <p class="card-text text-muted">Administración de actividades deportivas, horarios y cupos disponibles.</p>
+                    <a asp-controller="Actividades" asp-action="Index" class="btn btn-outline-primary">Ver actividades</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Reportes</h5>
+                    <p class="card-text text-muted">Consultá estadísticas y reportes de inscripciones y actividades.</p>
+                    <a asp-controller="Reportes" asp-action="SociosPorActividad" class="btn btn-outline-primary">Ver reportes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

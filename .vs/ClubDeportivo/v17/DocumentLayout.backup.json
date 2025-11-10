@@ -67,7 +67,8 @@
               "RelativeToolTip": "ClubDeportivo.Web\\Controllers\\ActividadesController.cs",
               "ViewState": "AgIAADMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T21:48:06.631Z"
+              "WhenOpened": "2025-11-10T21:48:06.631Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -79,7 +80,8 @@
               "RelativeToolTip": "ClubDeportivo.Web\\Data\\appdbcontext.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T21:47:51.912Z"
+              "WhenOpened": "2025-11-10T21:47:51.912Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -91,7 +93,8 @@
               "RelativeToolTip": "ClubDeportivo.Web\\Models\\actividad.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T21:47:15.719Z"
+              "WhenOpened": "2025-11-10T21:47:15.719Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -103,7 +106,8 @@
               "RelativeToolTip": "ClubDeportivo.Web\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-10T21:46:54.552Z"
+              "WhenOpened": "2025-11-10T21:46:54.552Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -115,7 +119,8 @@
               "RelativeToolTip": "ClubDeportivo.Web\\Views\\Inscripciones\\ActividadesPorSocio.cshtml",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-10T21:46:35.068Z"
+              "WhenOpened": "2025-11-10T21:46:35.068Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -127,7 +132,8 @@
               "RelativeToolTip": "ClubDeportivo.Web\\Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-03T23:31:48.831Z"
+              "WhenOpened": "2025-11-03T23:31:48.831Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",

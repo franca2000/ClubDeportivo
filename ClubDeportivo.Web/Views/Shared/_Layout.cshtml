@@ -1,69 +1,89 @@
 ﻿@{
-    var title = ViewData["Title"] ?? "Club Deportivo";
+    var year = DateTime.Now.Year;
 }
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@title - Club Deportivo</title>
+    <title>@ViewData["Title"] - Club Atlético Libertad</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        .brand-bar {
+            background: #0f3a68;
+        }
+
+        .brand-title {
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: .5px;
+        }
+
+        .mockup {
+            box-shadow: 0 8px 24px rgba(0,0,0,.08);
+            border-radius: .75rem;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Club Deportivo</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+    <header class="mb-3">
+        <div class="brand-bar py-2">
+            <div class="container d-flex align-items-center gap-3">
+                <img src="~/img/cal_logo.png" alt="CAL" height="36" />
+                <h1 class="h5 brand-title m-0">CLUB ATLÉTICO LIBERTAD</h1>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-sm navbar-light bg-light border-bottom shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Club Deportivo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Socios" asp-action="Index">Socios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Actividades" asp-action="Index">Actividades</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Reportes" asp-action="SociosPorActividad">Reportes</a>
-                        </li>
+                <div class="collapse navbar-collapse" id="topNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" asp-controller="Socios" asp-action="Index">Socios</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Actividades" asp-action="Index">Actividades</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Reportes" asp-action="SociosPorActividad">Reportes</a></li>
                     </ul>
-                    <span class="navbar-text text-muted small">
-                        @DateTime.Now.ToString("dd/MM/yyyy HH:mm")
-                    </span>
+                    <span class="navbar-text text-secondary small">@DateTime.Now.ToString("dd/MM/yyyy")</span>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-            @if (TempData["Ok"] != null)
-{
-            <div class="alert alert-success mt-3">@TempData["Ok"]</div>
-}
-            @if (TempData["Error"] != null)
-{
-            <div class="alert alert-danger mt-3">@TempData["Error"]</div>
-}
 
+    <div class="container">
+        <main role="main" class="pb-4">
+            @RenderBody()
+
+            @if (TempData["Ok"] is string ok && !string.IsNullOrWhiteSpace(ok))
+        {
+            <div class="alert alert-success mt-3">@ok</div>
+        }
+            @if (TempData["Error"] is string err && !string.IsNullOrWhiteSpace(err))
+        {
+            <div class="alert alert-danger mt-3">@err</div>
+        }
         </main>
     </div>
 
-    <footer class="border-top footer text-muted mt-3">
-        <div class="container text-center">
-            &copy; @DateTime.Now.Year - Club Deportivo | Proyecto ASP.NET MVC
+    <footer class="border-top bg-light text-muted mt-auto">
+        <div class="container py-3 d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-2">
+                <img src="~/img/cal_logo.png" alt="CAL" height="22" />
+                <span>© @year - Club Atlético Libertad</span>
+            </div>
+            <a asp-controller="Home" asp-action="Privacy" class="text-decoration-none">Política de Privacidad</a>
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+
 

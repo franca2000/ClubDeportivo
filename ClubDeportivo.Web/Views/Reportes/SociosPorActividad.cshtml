@@ -1,24 +1,31 @@
-@{
-    ViewData["Title"] = "Socios por actividad";
-}
-<h2>Socios por actividad</h2>
+@model IEnumerable<ClubDeportivo.Web.Models.ViewModels.SociosPorActividadVM>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Actividad</th>
-            <th>Activa</th>
-            <th>Socios inscriptos</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var row in (IEnumerable<dynamic>)Model)
-{
-        <tr>
-            <td>@row.Nombre</td>
-            <td>@(row.Activo ? "Sí" : "No")</td>
-            <td>@row.TotalSocios</td>
-        </tr>
-}
-    </tbody>
-</table>
+    @{
+    ViewData["Title"] = "Socios por actividad";
+    }
+
+    <h2>Socios por actividad</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Actividad</th>
+                <th>Activa</th>
+                <th>Cupo</th>
+                <th>Socios inscriptos</th>
+                <th>Cupos disponibles</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+    {
+            <tr>
+                <td>@item.NombreActividad</td>
+                <td>@(item.Activa ? "Sí" : "No")</td>
+                <td>@item.Cupo</td>
+                <td>@item.SociosInscriptos</td>
+                <td>@item.CuposDisponibles</td>
+            </tr>
+    }
+        </tbody>
+    </table>

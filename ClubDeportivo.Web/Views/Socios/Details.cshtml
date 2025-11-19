@@ -1,86 +1,82 @@
-@model ClubDeportivo.Web.Models.Actividad
+@model ClubDeportivo.Web.Models.Socio
+
 @{
-    ViewData["Title"] = "Detalle de actividad";
-    var inscriptos = (int)(ViewBag.Inscritos ?? 0);
-    var cuposLibres = Model.Cupo - inscriptos;
+    ViewData["Title"] = "Detalles del socio";
 }
 
-<h2>Detalle de actividad</h2>
+<h1>Detalles del socio</h1>
 
-@if (TempData["Ok"] != null)
-{
-<div class="alert alert-success">@TempData["Ok"]</div>
-}
-@if (TempData["Error"] != null)
-{
-<div class="alert alert-danger">@TempData["Error"]</div>
-}
+<div>
+    <h4>Socio</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dni)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dni)
+        </dd>
 
-<div class="card mb-4 shadow-sm">
-    <div class="card-body">
-        <h4 class="card-title mb-3">@Model.Nombre</h4>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
 
-        <dl class="row">
-            <dt class="col-sm-3">Descripción</dt>
-            <dd class="col-sm-9">@Model.Descripcion</dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Apellido)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Apellido)
+        </dd>
 
-            <dt class="col-sm-3">Días</dt>
-            <dd class="col-sm-9">@Model.Dias</dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaNacimiento)
+        </dd>
 
-            <dt class="col-sm-3">Horario</dt>
-            <dd class="col-sm-9">@Model.HoraInicio - @Model.HoraFin</dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
 
-            <dt class="col-sm-3">Cupo</dt>
-            <dd class="col-sm-9">@Model.Cupo</dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
 
-            <dt class="col-sm-3">Inscriptos</dt>
-            <dd class="col-sm-9">@inscriptos</dd>
-
-            <dt class="col-sm-3">Cupos libres</dt>
-            <dd class="col-sm-9">@cuposLibres</dd>
-
-            <dt class="col-sm-3">Activa</dt>
-            <dd class="col-sm-9">@(Model.Activo ? "Sí" : "No")</dd>
-        </dl>
-    </div>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+    </dl>
 </div>
 
-<div class="d-flex flex-wrap gap-2">
-    <a asp-action="Edit" asp-route-id="@Model.ActividadId" class="btn btn-warning">
-        Editar
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model.SocioId" class="btn btn-primary">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary">Volver al listado</a>
+
+    <!-- Opcional: atajos relacionados con Inscripciones -->
+    <a asp-controller="Inscripciones"
+       asp-action="Inscribir"
+       asp-route-socioId="@Model.SocioId"
+       class="btn btn-outline-primary d-none">
+        (no usado, solo ejemplo)
     </a>
 
-    <a asp-action="Index" class="btn btn-secondary">
-        Volver al listado
+    <a asp-controller="Inscripciones"
+       asp-action="ActividadesPorSocio"
+       asp-route-id="@Model.SocioId"
+       class="btn btn-outline-info">
+        Ver actividades del socio
     </a>
-
-    @* Botón de baja lógica *@
-    @if (Model.Activo)
-    {
-        if (inscriptos == 0)
-        {
-    <form asp-action="Delete" asp-route-id="@Model.ActividadId" method="post" class="d-inline"
-          onsubmit="return confirm('¿Dar de baja la actividad? Esta acción es lógica (Activo = false).');">
-        <button type="submit" class="btn btn-danger">
-            Dar de baja (lógica)
-        </button>
-    </form>
-        }
-        else
-        {
-    <button type="button" class="btn btn-danger" disabled
-            title="No se puede dar de baja: tiene socios inscriptos">
-        Dar de baja (lógica)
-    </button>
-        }
-    }
-    else
-    {
-    <span class="badge bg-secondary align-self-center">Actividad inactiva</span>
-    }
 </div>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
-

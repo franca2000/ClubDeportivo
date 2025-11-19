@@ -1,8 +1,13 @@
-namespace ClubDeportivo.Web.Models;
-
-public class ErrorViewModel
+namespace ClubDeportivo.Web.Models
 {
-    public string? RequestId { get; set; }
+    // Modelo utilizado para mostrar información en la vista de errores
+    public class ErrorViewModel
+    {
+        // Identificador único de la solicitud actual (útil para rastrear errores)
+        public string? RequestId { get; set; }
 
-    public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+        // Propiedad calculada: indica si debe mostrarse el RequestId en la vista
+        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+    }
 }
+

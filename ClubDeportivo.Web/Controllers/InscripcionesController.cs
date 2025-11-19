@@ -56,23 +56,27 @@ namespace ClubDeportivo.Web.Controllers
             if (!ModelState.IsValid) return await Create(vm.SocioId);
 
             var socio = await _ctx.Socios.FindAsync(vm.SocioId);
-            var actividad = await _ctx.Actividades.FirstOrDefaultAsync(a => a.ActividadId == vm.ActividadId && a.Activo);
+            var actividad = await _ctx.Actividades
+                .FirstOrDefaultAsync(a => a.ActividadId == vm.ActividadId && a.Activo);
+
             if (socio == null || actividad == null)
             {
                 ModelState.AddModelError("", "Socio o actividad inválida.");
                 return await Create(vm.SocioId);
             }
 
-            // No duplicar socio-actividad
-            bool yaInscripto = await _ctx.Inscripciones.AnyAsync(i => i.SocioId == vm.SocioId && i.ActividadId == vm.ActividadId);
+            bool yaInscripto = await _ctx.Inscripciones
+                .AnyAsync(i => i.SocioId == vm.SocioId && i.ActividadId == vm.ActividadId);
+
             if (yaInscripto)
             {
                 ModelState.AddModelError("", "El socio ya está inscripto en esa actividad.");
                 return await Create(vm.SocioId);
             }
 
-            // Validar cupo disponible
-            int inscritos = await _ctx.Inscripciones.CountAsync(i => i.ActividadId == vm.ActividadId);
+            int inscritos = await _ctx.Inscripciones
+                .CountAsync(i => i.ActividadId == vm.ActividadId);
+
             if (inscritos >= actividad.Cupo)
             {
                 ModelState.AddModelError("", "No hay cupos disponibles en la actividad seleccionada.");
@@ -85,13 +89,13 @@ namespace ClubDeportivo.Web.Controllers
                 ActividadId = vm.ActividadId,
                 FechaInscripcion = DateTime.Today
             });
+
             await _ctx.SaveChangesAsync();
 
             TempData["Ok"] = "Inscripción realizada correctamente.";
             return RedirectToAction("Details", "Socios", new { id = vm.SocioId });
         }
 
-        // Ver actividades de un socio
         // GET: /Inscripciones/ActividadesPorSocio/5
         public async Task<IActionResult> ActividadesPorSocio(int id)
         {
@@ -101,7 +105,14 @@ namespace ClubDeportivo.Web.Controllers
             var actividades = await _ctx.Inscripciones
                 .Where(i => i.SocioId == id)
                 .Include(i => i.Actividad)
-                .Select(i => new { i.Actividad!.Nombre, i.Actividad!.Dias, i.Actividad!.HoraInicio, i.Actividad!.HoraFin, i.FechaInscripcion })
+                .Select(i => new
+                {
+                    i.Actividad!.Nombre,
+                    i.Actividad!.Dias,
+                    i.Actividad!.HoraInicio,
+                    i.Actividad!.HoraFin,
+                    i.FechaInscripcion
+                })
                 .ToListAsync();
 
             ViewBag.Socio = $"{socio.Apellido}, {socio.Nombre}";
@@ -109,3 +120,4 @@ namespace ClubDeportivo.Web.Controllers
         }
     }
 }
+

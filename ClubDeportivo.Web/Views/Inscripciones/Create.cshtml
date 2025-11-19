@@ -1,26 +1,40 @@
 @model ClubDeportivo.Web.Models.ViewModels.InscripcionCreateVM
+
 @{
-    ViewData["Title"] = "Inscribir socio";
+    ViewData["Title"] = "Inscribir socio en actividad";
 }
 
-<h2>Inscribir socio</h2>
-<div class="alert alert-secondary">
-    <strong>Socio:</strong> @Model.NombreSocio (ID: @Model.SocioId)
+<h1>Inscribir socio en actividad</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h4>Socio: @Model.NombreSocio</h4>
+
+        <form asp-action="Create" method="post">
+            @* SocioId va oculto *@
+            <input type="hidden" asp-for="SocioId" />
+
+            <div class="mb-3">
+                <label asp-for="ActividadId" class="form-label"></label>
+                <select asp-for="ActividadId"
+                        asp-items="Model.ActividadesDisponibles"
+                        class="form-select">
+                    <option value="">-- Selecciona una actividad --</option>
+                </select>
+                <span asp-validation-for="ActividadId" class="text-danger"></span>
+            </div>
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <button type="submit" class="btn btn-primary">Confirmar inscripción</button>
+            <a asp-controller="Socios"
+               asp-action="Index"
+               class="btn btn-secondary">Volver</a>
+        </form>
+    </div>
 </div>
 
-<form asp-action="Create" method="post">
-    <input type="hidden" asp-for="SocioId" />
-    <div class="mb-3">
-        <label class="form-label">Actividad</label>
-        <select asp-for="ActividadId" asp-items="Model.ActividadesDisponibles" class="form-select">
-            <option value="">-- Seleccionar --</option>
-        </select>
-        <span asp-validation-for="ActividadId" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Inscribir</button>
-    <a asp-controller="Socios" asp-action="Details" asp-route-id="@Model.SocioId" class="btn btn-secondary">Volver</a>
-</form>
-
-@section Scripts{
-    <partial name="_ValidationScriptsPartial" />
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

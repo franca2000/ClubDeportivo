@@ -5,7 +5,7 @@
     {
         public int ActividadId { get; set; }
 
-        public string NombreActividad { get; set; } = null!;
+        public string NombreActividad { get; set; } = string.Empty;
 
         public bool Activa { get; set; }
 
@@ -14,8 +14,14 @@
         // Cantidad de socios inscriptos en esa actividad
         public int SociosInscriptos { get; set; }
 
-        // Propiedad calculada: cupos libres = cupo total - inscriptos
-        public int CuposDisponibles => Cupo - SociosInscriptos;
+        // Propiedad calculada: cupos libres = cupo total - inscriptos (no negativa)
+        public int CuposDisponibles => System.Math.Max(0, Cupo - SociosInscriptos);
+
+        // Texto preparado para la vista
+        public string ActivaTexto => Activa ? "Sí" : "No";
+
+        // Porcentaje ocupado (guardando división por cero), con 1 decimal
+        public double PorcentajeOcupado => Cupo == 0 ? 0 : System.Math.Round((SociosInscriptos / (double)Cupo) * 100.0, 1);
     }
 }
 

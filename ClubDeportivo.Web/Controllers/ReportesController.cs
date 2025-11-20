@@ -37,5 +37,52 @@ namespace ClubDeportivo.Web.Controllers
 
             return View(datos);
         }
+
+        // GET: /Reportes/ExportarSociosPorActividad
+        public async Task<IActionResult> ExportarSociosPorActividad()
+        {
+            var datos = await _ctx.Actividades
+                .OrderBy(a => a.Nombre)
+                .Select(a => new SociosPorActividadVM
+                {
+                    ActividadId = a.ActividadId,
+                    NombreActividad = a.Nombre,
+                    Activa = a.Activo,
+                    Cupo = a.Cupo,
+                    SociosInscriptos = _ctx.Inscripciones.Count(i => i.ActividadId == a.ActividadId)
+                })
+                .ToListAsync();
+
+            static string EscapeCsv(string? s)
+            {
+                if (string.IsNullOrEmpty(s)) return "";
+                // Dobla comillas y encierra en comillas. Usamos punto y coma como separador (Excel en locales ES).
+                return "\"" + s.Replace("\"", "\"\"") + "\"";
+            }
+
+            var sb = new StringBuilder();
+            // Encabezado en español (separador: ;)
+            sb.AppendLine("Actividad;Activa;Cupo;Socios inscriptos;Cupos disponibles");
+
+            foreach (var item in datos)
+            {
+                // Usamos ; como separador (mejor compatibilidad con Excel en locales que usan coma decimal)
+                sb.Append(EscapeCsv(item.NombreActividad));
+                sb.Append(';');
+                sb.Append(item.Activa ? "Sí" : "No");
+                sb.Append(';');
+                sb.Append(item.Cupo);
+                sb.Append(';');
+                sb.Append(item.SociosInscriptos);
+                sb.Append(';');
+                sb.Append(item.CuposDisponibles);
+                sb.AppendLine();
+            }
+
+            // UTF-8 con BOM para que Excel lo abra correctamente
+            var bytes = new UTF8Encoding(encoderShouldEmitUTF8Identifier: true).GetBytes(sb.ToString());
+            var fileName = "socios_por_actividad.csv";
+            return File(bytes, "text/csv; charset=utf-8", fileName);
+        }
     }
 }
